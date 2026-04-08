@@ -1,136 +1,167 @@
-import Image from 'next/image'
+'use client'
 
-export const metadata = {
-  title: 'About Us | Vesa Projekt',
-  description: 'Learn more about our project and team.',
-}
+import Image from 'next/image'
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 py-16">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center">About Us</h1>
-        
-        <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Our Story</h2>
-          <p className="text-gray-600 mb-4">
-            Vesa Projekt started as a vision to create a modern e-commerce platform that combines
-            cutting-edge technology with exceptional user experience. Our team of dedicated
-            developers and designers worked tirelessly to bring this vision to life.
-          </p>
-          <p className="text-gray-600 mb-4">
-            Built with Next.js, TypeScript, and MongoDB, our platform leverages the latest
-            web technologies to provide a fast, secure, and scalable shopping experience.
-          </p>
+    <div className="min-h-screen bg-gradient-to-b from-white to-purple-50">
+      {/* Hero Section */}
+      <div className="relative bg-purple-900 text-white py-24 mb-16">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-purple-800/90" />
+          <Image
+            src="/images/hero-fashion.jpg"
+            alt="Fashion Background"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+            onError={(e) => {
+              const target = e.target as HTMLImageElement
+              target.style.display = 'none'
+            }}
+          />
         </div>
-
-        <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
-          <div className="bg-blue-50 p-6 rounded-lg">
-            <p className="text-gray-800 italic">
-              "To provide a seamless and enjoyable shopping experience while maintaining
-              the highest standards of quality and customer service."
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">About Luxeflow</h1>
+            <p className="text-xl md:text-2xl text-purple-100">
+              Crafting exceptional fashion experiences through innovation and style
             </p>
           </div>
         </div>
+      </div>
 
-        <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Technologies Used</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { name: 'Next.js', icon: '/icons/nextjs.svg' },
-              { name: 'TypeScript', icon: '/icons/typescript.svg' },
-              { name: 'MongoDB', icon: '/icons/mongodb.svg' },
-              { name: 'Tailwind CSS', icon: '/icons/tailwind.svg' },
-            ].map((tech) => (
-              <div
-                key={tech.name}
-                className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm"
-              >
-                <div className="relative w-12 h-12 mb-2">
-                  <Image
-                    src={tech.icon}
-                    alt={tech.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <span className="text-sm font-medium">{tech.name}</span>
+      <div className="container mx-auto px-4 pb-16">
+        <div className="max-w-4xl mx-auto">
+          {/* Our Story Section */}
+          <div className="mb-16">
+            <div className="flex items-center mb-8">
+              <div className="flex-1 h-px bg-purple-200"></div>
+              <h2 className="text-3xl font-bold text-gray-800 px-6">Our Story</h2>
+              <div className="flex-1 h-px bg-purple-200"></div>
+            </div>
+            <div className="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.02] transition-transform duration-300">
+              <div className="prose prose-purple max-w-none">
+                <p className="text-gray-600 text-lg mb-4 leading-relaxed">
+                  Welcome to Luxeflow, your premier destination for high-quality fashion and accessories.
+                  Our journey began with a simple vision: to create an online shopping experience that combines
+                  elegance with convenience, offering carefully curated collections for the modern shopper.
+                </p>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  What sets us apart is our commitment to quality, style, and customer satisfaction. Each product
+                  in our collection is thoughtfully selected to ensure it meets our high standards of excellence,
+                  from casual wear to luxury accessories.
+                </p>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
 
-        <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Our Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'John Doe',
-                role: 'Lead Developer',
-                image: '/team/john.jpg',
-              },
-              {
-                name: 'Jane Smith',
-                role: 'UI/UX Designer',
-                image: '/team/jane.jpg',
-              },
-              {
-                name: 'Mike Johnson',
-                role: 'Backend Developer',
-                image: '/team/mike.jpg',
-              },
-            ].map((member) => (
-              <div
-                key={member.name}
-                className="text-center"
-              >
-                <div className="relative w-32 h-32 mx-auto mb-4">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover rounded-full"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                <p className="text-gray-600">{member.role}</p>
+          {/* Mission Section */}
+          <div className="mb-16">
+            <div className="flex items-center mb-8">
+              <div className="flex-1 h-px bg-purple-200"></div>
+              <h2 className="text-3xl font-bold text-gray-800 px-6">Our Mission</h2>
+              <div className="flex-1 h-px bg-purple-200"></div>
+            </div>
+            <div className="relative bg-gradient-to-br from-purple-600 to-purple-800 rounded-2xl shadow-lg p-12 overflow-hidden">
+              <div className="absolute inset-0 opacity-10">
+                <svg className="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <pattern id="quotes" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <text x="0" y="15" className="text-white" fontSize="20">"</text>
+                  </pattern>
+                  <rect x="0" y="0" width="100%" height="100%" fill="url(#quotes)" />
+                </svg>
               </div>
-            ))}
+              <p className="text-white text-2xl md:text-3xl text-center italic leading-relaxed relative z-10">
+                "To provide a seamless and enjoyable shopping experience while delivering
+                premium quality products that enhance our customers' lifestyle."
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
-          <p className="text-gray-600 mb-4">
-            Have questions or want to learn more about our project? Feel free to reach
-            out to us through our contact page or social media channels.
-          </p>
-          <div className="flex justify-center space-x-6">
-            {[
-              { name: 'Facebook', href: '#', icon: 'facebook.svg' },
-              { name: 'Twitter', href: '#', icon: 'twitter.svg' },
-              { name: 'Instagram', href: '#', icon: 'instagram.svg' },
-              { name: 'LinkedIn', href: '#', icon: 'linkedin.svg' },
-            ].map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                className="text-gray-400 hover:text-gray-500"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="sr-only">{social.name}</span>
-                <div className="relative w-6 h-6">
-                  <Image
-                    src={`/icons/${social.icon}`}
-                    alt={social.name}
-                    fill
-                    className="object-contain"
-                  />
+          {/* Technology Section */}
+          <div className="mb-16">
+            <div className="flex items-center mb-8">
+              <div className="flex-1 h-px bg-purple-200"></div>
+              <h2 className="text-3xl font-bold text-gray-800 px-6">Built with Modern Technology</h2>
+              <div className="flex-1 h-px bg-purple-200"></div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { name: 'Next.js', icon: '/icons/nextjs.svg' },
+                { name: 'TypeScript', icon: '/icons/typescript.svg' },
+                { name: 'MongoDB', icon: '/icons/mongodb.svg' },
+                { name: 'Tailwind CSS', icon: '/icons/tailwind.svg' },
+              ].map((tech) => (
+                <div
+                  key={tech.name}
+                  className="bg-white rounded-xl shadow-lg p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-xl"
+                >
+                  <div className="relative w-20 h-20 mx-auto mb-4">
+                    <Image
+                      src={tech.icon}
+                      alt={tech.name}
+                      fill
+                      sizes="80px"
+                      className="object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                      }}
+                    />
+                  </div>
+                  <p className="text-center font-medium text-gray-700">{tech.name}</p>
                 </div>
-              </a>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          {/* Connect Section */}
+          <div>
+            <div className="flex items-center mb-8">
+              <div className="flex-1 h-px bg-purple-200"></div>
+              <h2 className="text-3xl font-bold text-gray-800 px-6">Connect With Us</h2>
+              <div className="flex-1 h-px bg-purple-200"></div>
+            </div>
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <p className="text-gray-600 text-lg text-center mb-8">
+                Follow us on social media to stay updated with the latest trends, collections,
+                and exclusive offers. We'd love to hear from you!
+              </p>
+              <div className="flex justify-center space-x-10">
+                {[
+                  { name: 'Facebook', href: 'https://facebook.com', icon: '/icons/facebook.svg' },
+                  { name: 'Twitter', href: 'https://twitter.com', icon: '/icons/twitter.svg' },
+                  { name: 'Instagram', href: 'https://instagram.com', icon: '/icons/instagram.svg' },
+                  { name: 'LinkedIn', href: 'https://linkedin.com', icon: '/icons/linkedin.svg' },
+                ].map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    className="group relative"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="relative w-12 h-12 transform group-hover:scale-110 transition-transform duration-300">
+                      <div className="absolute inset-0 bg-purple-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <Image
+                        src={social.icon}
+                        alt={social.name}
+                        fill
+                        sizes="48px"
+                        className="object-contain p-2"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement
+                          target.style.display = 'none'
+                        }}
+                      />
+                    </div>
+                    <span className="sr-only">{social.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

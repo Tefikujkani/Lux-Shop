@@ -1,5 +1,5 @@
 {
-  "name": "vesa-projekt",
+  "name": "luxeflow",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -10,18 +10,21 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "set-admin": "tsx scripts/set-admin.ts"
   },
   "dependencies": {
     "@auth/mongodb-adapter": "^2.0.0",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^3.3.2",
+    "@splinetool/runtime": "^1.9.98",
     "axios": "^1.6.2",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "mongodb": "^6.3.0",
+    "framer-motion": "^12.15.0",
+    "mongodb": "^6.17.0",
     "next": "14.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -1,13 +1,13 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { Header } from '@/components/layout/Header'
 import { Providers } from '@/components/Providers'
+import { ConditionalLayout } from '@/components/layout/ConditionalLayout'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Vesa Project',
-  description: 'An e-commerce project',
+  title: 'Luxeflow',
+  description: 'Your premier destination for luxury fashion and accessories',
 }
 
 export default function RootLayout({
@@ -17,10 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} flex flex-col min-h-screen`}>
         <Providers>
-          <Header />
-          <main className="container mx-auto px-4 py-8">{children}</main>
+          <ConditionalLayout>
+            {children}
+          </ConditionalLayout>
         </Providers>
       </body>
     </html>

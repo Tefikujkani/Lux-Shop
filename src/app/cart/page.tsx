@@ -77,12 +77,21 @@ export default function CartPage() {
             <ul className="-my-6 divide-y divide-gray-200">
               {items.map((item) => (
                 <li key={item.id} className="py-6 flex">
-                  <div className="relative flex-shrink-0 w-24 h-24">
+                  <div className="relative flex-shrink-0 w-24 h-24 bg-gray-200 rounded-md overflow-hidden">
                     <Image
                       src={item.image}
                       alt={item.name}
                       fill
+                      sizes="96px"
                       className="rounded-md object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                        const parent = target.parentElement
+                        if (parent) {
+                          parent.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400 text-xs">No image</div>'
+                        }
+                      }}
                     />
                   </div>
 

@@ -40,12 +40,21 @@ export default async function ProductPage({ params }: { params: { id: string } }
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Product Image */}
-        <div className="relative aspect-square">
+        <div className="relative aspect-square bg-gray-200 rounded-lg overflow-hidden">
           <Image
             src={product.image}
             alt={product.name}
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover rounded-lg"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement
+              target.style.display = 'none'
+              const parent = target.parentElement
+              if (parent) {
+                parent.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">Image not available</div>'
+              }
+            }}
           />
         </div>
 

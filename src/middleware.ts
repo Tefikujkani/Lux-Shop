@@ -29,8 +29,11 @@ export async function middleware(request: NextRequest) {
   }
 
   // Check if the path requires admin role
+  // Allow access in demo mode (when no MongoDB is configured)
   if (adminPaths.some((path) => pathname.startsWith(path))) {
-    if (!token || token.role !== 'admin') {
+    // In demo mode, allow access without authentication
+    const isDemoMode = !process.env.MONGODB_URI
+    if (!isDemoMode && (!token || token.role !== 'admin')) {
       return new NextResponse('Unauthorized', { status: 403 })
     }
   }

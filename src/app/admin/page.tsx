@@ -48,13 +48,63 @@ export default function AdminPage() {
   const fetchData = async () => {
     try {
       if (activeTab === 'products') {
-        const response = await fetch('/api/products')
-        const data = await response.json()
-        setProducts(data.products)
+        // Demo data for products
+        const demoProducts = [
+          {
+            _id: '1',
+            name: 'Classic Casual Shirt',
+            description: 'Premium cotton casual shirt for everyday style',
+            price: 49.99,
+            category: 'Men',
+            image: '/images/mens-casual-shirt-1.jpg',
+            stock: 15
+          },
+          {
+            _id: '2',
+            name: 'Designer Handbag',
+            description: 'Elegant leather handbag with modern design',
+            price: 129.99,
+            category: 'Women',
+            image: '/images/womens-bag-1.jpg',
+            stock: 8
+          },
+          {
+            _id: '3',
+            name: 'Luxury Watch',
+            description: 'Premium timepiece with sophisticated style',
+            price: 299.99,
+            category: 'Accessories',
+            image: '/images/watch-luxury-1.jpg',
+            stock: 5
+          }
+        ]
+        setProducts(demoProducts as Product[])
       } else {
-        const response = await fetch('/api/users')
-        const data = await response.json()
-        setUsers(data)
+        // Demo data for users
+        const demoUsers = [
+          {
+            _id: '1',
+            name: 'Admin User',
+            email: 'ujkanitefik@gmail.com',
+            role: 'admin',
+            createdAt: new Date().toISOString()
+          },
+          {
+            _id: '2',
+            name: 'John Doe',
+            email: 'john@example.com',
+            role: 'user',
+            createdAt: new Date().toISOString()
+          },
+          {
+            _id: '3',
+            name: 'Jane Smith',
+            email: 'jane@example.com',
+            role: 'user',
+            createdAt: new Date().toISOString()
+          }
+        ]
+        setUsers(demoUsers)
       }
     } catch (error) {
       console.error(`Error fetching ${activeTab}:`, error)
@@ -122,7 +172,10 @@ export default function AdminPage() {
     }
   }
 
-  if (session?.user?.role !== 'admin') {
+  // Demo mode - show admin interface without authentication
+  const isDemoMode = true // Set to false when MongoDB is connected
+  
+  if (!isDemoMode && session?.user?.role !== 'admin') {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="text-center">
@@ -137,7 +190,10 @@ export default function AdminPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+          <div>
+            <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+            <p className="text-sm text-gray-500 mt-1">Demo Mode - Preview Only</p>
+          </div>
           {activeTab === 'products' && (
             <Button onClick={() => setIsModalOpen(true)}>Add Product</Button>
           )}
@@ -150,7 +206,7 @@ export default function AdminPage() {
                 onClick={() => setActiveTab('products')}
                 className={`flex items-center py-4 px-1 border-b-2 font-medium text-sm ${
                   activeTab === 'products'
-                    ? 'border-blue-500 text-blue-600'
+                    ? 'border-purple-500 text-purple-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
@@ -161,7 +217,7 @@ export default function AdminPage() {
                 onClick={() => setActiveTab('users')}
                 className={`flex items-center py-4 px-1 border-b-2 font-medium text-sm ${
                   activeTab === 'users'
-                    ? 'border-blue-500 text-blue-600'
+                    ? 'border-purple-500 text-purple-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
